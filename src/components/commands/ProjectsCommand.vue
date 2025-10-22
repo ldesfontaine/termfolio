@@ -21,24 +21,36 @@
 <script setup>
 const projects = [
   {
-    title: "Terminal Portfolio",
-    desc: "A terminal-style portfolio website built with React",
-    stack: ["React", "JavaScript", "CSS"],
-    link: "https://github.com/navnee1h/terminal-portfolio"
+    title: "Documentation",
+    desc: "Dépôt contenant toutes mes documentations (README, guides, About).",
+    stack: ["Markdown"],
+    link: "https://github.com/ldesfontaine/Documentation"
   },
   {
-    title: "Cybersecurity Tools",
-    desc: "Collection of cybersecurity scripts and tools",
-    stack: ["Python", "Bash", "Networking"],
-    link: null
+    title: "lamp_installer_wp",
+    desc: "Script Bash permettant l'installation d'un LAMP et d'un WordPress.",
+    stack: ["Bash / Shell (100%)"],
+    link: "https://github.com/ldesfontaine/lamp_installer_wp"
   },
   {
-    title: "CTF Solutions",
-    desc: "My solutions and writeups for various CTF challenges",
-    stack: ["Python", "Cryptography", "Forensics"],
-    link: null
+    title: "CrunchyTrack",
+    desc: "Client Crunchyroll — Deprecated depuis l'ajout des Users sur Crunchyroll.",
+    stack: ["JavaScript (78.8%)", "CSS (17.7%)", "HTML (3.5%)"],
+    link: "https://github.com/ldesfontaine/CrunchyTrack"
+  },
+  {
+    title: "CrunchyTrackApi",
+    desc: "API pour le client CrunchyTrack.",
+    stack: ["Python (100%)"],
+    link: "https://github.com/ldesfontaine/CrunchyTrackApi"
+  },
+  {
+    title: "Location",
+    desc: "Site vitrine de location de véhicules réalisé avec le framework Laravel.",
+    stack: ["PHP (54.3%)", "Blade (44.3%)", "Other (1.4%)"],
+    link: "https://github.com/ldesfontaine/location"
   }
-]
+];
 </script>
 
 <style scoped>

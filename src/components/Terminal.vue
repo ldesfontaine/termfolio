@@ -1,19 +1,10 @@
 <template>
   <div class="terminal-container" :style="themeStore.cssVariables">
-    <div class="terminal-header">
-      <div class="terminal-title">Terminal Portfolio - Navaneeth M.S</div>
-      <div class="terminal-controls">
-        <span class="control minimize"></span>
-        <span class="control maximize"></span>
-        <span class="control close"></span>
-      </div>
-    </div>
-
     <div class="terminal-body" ref="terminalBody">
       <div class="welcome-message">
         <pre>{{ welcomeMessage }}</pre>
-        <p>Welcome to my interactive terminal portfolio!</p>
-        <p>Type <span class="command-highlight">'help'</span> to see available commands.</p>
+        <p>Bienvenue dans mon portfolio interactif !</p>
+        <p>Tapez <span class="command-highlight">'help'</span> pour voir les commandes disponibles.</p>
       </div>
 
       <!-- Command History -->
@@ -55,14 +46,12 @@ import { useThemeStore } from '@/stores/theme'
 
 // Import command components
 import AboutCommand from './commands/AboutCommand.vue'
-import EducationCommand from './commands/EducationCommand.vue'
+import ParcoursCommand from './commands/ParcoursCommand.vue'
 import HelpCommand from './commands/HelpCommand.vue'
-import EchoCommand from './commands/EchoCommand.vue'
 import ProjectsCommand from './commands/ProjectsCommand.vue'
 import SkillsCommand from './commands/SkillsCommand.vue'
 import SocialsCommand from './commands/SocialsCommand.vue'
 import ThemesCommand from './commands/ThemesCommand.vue'
-import SimpleOutputCommand from './commands/SimpleOutputCommand.vue'
 
 const terminalStore = useTerminalStore()
 const themeStore = useThemeStore()
@@ -74,25 +63,29 @@ const commandHistory = ref([])
 const historyIndex = ref(-1)
 
 const welcomeMessage = `
-  _   _                                  _   _       __  __   _____
- | \\ | |                                | | | |     |  \\/  | /  ___|
- |  \\| | __ ___   ____ _ _ __   ___  __ _| |_| |__   | .  . | \\ \\\\--.
- | . \\\\| |/ _\\\\| \\ \\ / / _\\\\| '_ \\ / _ \\/ _\\\\| __| '_ \\  | |\\/| |  \\\\--. \\
- | |\\  | (_| |\\ V / (_| | | | |  __/ (_| | |_| | | | | |  | | /\\__/ /
- \\_| \\_/\\__,_| \\_/ \\__,_|_| |_|\\___|\\__,_|\\__|_| |_| \\_|  |_/ \\____/`
+ _
+| |
+| |    _   _  ___ __ _ ___
+| |   | | | |/ __/ _\` / __|
+| |___| |_| | (_| (_| \\__ \\
+|______\\__,_|\\___\\__,_|___/
 
+ _____            __            _        _
+|  __ \\          / _|          | |      (_)
+| |  | | ___  ___| |_ ___  _ __ | |_ __ _ _ _ __   ___
+| |  | |/ _ \\/ __|  _/ _ \\| '_ \\| __/ _\` | | '_ \\ / _ \\
+| |__| |  __/\\__ \\ || (_) | | | | || (_| | | | | |  __/
+|_____/ \\___||___/_| \\___/|_| |_|\\__\\__,_|_|_| |_|\\___| `
 const getCommandComponent = (command) => {
   const cmd = command.toLowerCase().trim()
 
   switch (cmd) {
     case 'about':
       return AboutCommand
-    case 'education':
-      return EducationCommand
+    case 'parcours':
+      return ParcoursCommand
     case 'help':
       return HelpCommand
-    case 'echo':
-      return EchoCommand
     case 'projects':
       return ProjectsCommand
     case 'skills':
@@ -102,16 +95,9 @@ const getCommandComponent = (command) => {
     case 'themes':
       return ThemesCommand
     case 'clear':
-      return null // Handle clear separately
-    case 'history':
-      return 'div' // Return simple div for history
-    case 'pwd':
-    case 'whoami':
-    case 'email':
-    case 'gui':
-      return SimpleOutputCommand
+      return null // Gérer clear séparément
     default:
-      return 'div' // For unknown commands
+      return 'div' // Pour les commandes inconnues
   }
 }
 
@@ -121,33 +107,23 @@ const executeCommand = (command) => {
 
   const [cmd, ...args] = trimmedCommand.split(' ')
 
-  // Handle special commands
+  // Gérer les commandes spéciales
   if (cmd.toLowerCase() === 'clear') {
     commandHistory.value = []
     return
   }
 
-  if (cmd.toLowerCase() === 'history') {
-    const historyOutput = terminalStore.history.map((cmd, index) => `${index + 1}  ${cmd}`).join('\n');
-    commandHistory.value.push({
-      command: trimmedCommand,
-      args: [],
-      output: historyOutput,
-      isHistory: true
-    })
-  } else {
-    // Add command to history
-    commandHistory.value.push({
-      command: trimmedCommand,
-      args: args,
-      isUnknown: !getCommandComponent(cmd) && cmd.toLowerCase() !== 'clear'
-    })
-  }
+  // Ajouter la commande à l'historique
+  commandHistory.value.push({
+    command: trimmedCommand,
+    args: args,
+    isUnknown: !getCommandComponent(cmd) && cmd.toLowerCase() !== 'clear'
+  })
 
-  // Add to terminal history
+  // Ajouter à l'historique du terminal
   terminalStore.addToHistory(trimmedCommand)
 
-  // Scroll to bottom
+  // Faire défiler vers le bas
   nextTick(() => {
     scrollToBottom()
   })
@@ -200,9 +176,8 @@ const handleKeydown = (event) => {
 
 const autoComplete = () => {
   const commands = [
-    'about', 'clear', 'echo', 'education', 'email', 'gui',
-    'help', 'history', 'projects', 'pwd', 'skills', 'socials',
-    'themes', 'whoami'
+    'about', 'clear', 'parcours', 'help', 'projects',
+    'skills', 'socials', 'themes'
   ]
 
   const input = currentCommand.value.toLowerCase()
@@ -229,7 +204,7 @@ onMounted(() => {
   themeStore.loadTheme()
   focusInput()
 
-  // Focus input when clicking anywhere in terminal
+  // Focaliser l'input lors d'un clic n'importe où dans le terminal
   document.addEventListener('click', focusInput)
 })
 </script>
@@ -248,45 +223,6 @@ onMounted(() => {
   flex-direction: column;
 }
 
-.terminal-header {
-  background-color: var(--color-text-300);
-  padding: 0.75rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.terminal-title {
-  color: var(--color-body);
-  font-weight: 600;
-  font-size: 0.875rem;
-}
-
-.terminal-controls {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.control {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.minimize {
-  background-color: #fbbf24;
-}
-
-.maximize {
-  background-color: #10b981;
-}
-
-.close {
-  background-color: #ef4444;
-}
-
 .terminal-body {
   padding: 1rem;
   flex: 1;
@@ -295,6 +231,7 @@ onMounted(() => {
   color: var(--color-text-100);
   font-family: 'IBM Plex Mono', monospace;
   min-height: 0;
+  height: 100vh;
 }
 
 .welcome-message {
@@ -382,14 +319,6 @@ onMounted(() => {
 
   .terminal-body {
     padding: 0.75rem;
-  }
-
-  .terminal-header {
-    padding: 0.5rem 0.75rem;
-  }
-
-  .terminal-title {
-    font-size: 0.75rem;
   }
 }
 </style>

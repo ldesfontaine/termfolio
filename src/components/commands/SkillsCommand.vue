@@ -15,22 +15,41 @@
 <script setup>
 const skillsData = [
   {
-    category: "Programming Languages",
-    skills: ["Python", "JavaScript", "Bash", "C", "SQL"]
+    category: "Développement",
+    skills: [
+      "Langages : Python, JS/TS, PHP, Java (etc.)",
+      "Frameworks & Libs : React, Angular, Next.js, Symfony, Laravel, Django, FastAPI, LangChain, LangGraph",
+      "IA & Données : OpenAI, Mistral, TensorFlow / Keras (océan hackathon)"
+    ]
   },
   {
-    category: "Cybersecurity",
-    skills: ["Digital Forensics", "Network Security", "Penetration Testing", "CTFs", "Incident Response"]
+    category: "Cloud & Infrastructure",
+    skills: [
+      "Conteneurisation : Docker, Docker Compose",
+      "Automatisation / CI·CD : Git, GitHub, GitLab CI, Ansible (débutant)",
+      "Scripts : Bash & Python (scripts divers)",
+      "Gestion de projet : Scrum / Méthode Agile"
+    ]
   },
   {
-    category: "Web Technologies",
-    skills: ["React", "Vue.js", "Node.js", "HTML/CSS", "REST APIs"]
+    category: "Systèmes & Réseaux",
+    skills: [
+      "Systèmes d'exploitation : Linux (Debian, OBarun, Mint), Windows 10 & 11",
+      "Réseaux : TCP/UDP, SSH, FTP/SFTP, modèle OSI",
+      "Sécurité & Supervision : fail2ban, bonnes pratiques, DevSecOps"
+    ]
   },
   {
-    category: "Tools & Platforms",
-    skills: ["Linux", "Git", "Docker", "Wireshark", "Metasploit", "Burp Suite"]
+    category: "Pentest",
+    skills: [
+      "Reconnaissance",
+      "Énumération : SMB, FTP, RDP, SSH, MySQL, SMTP, etc.",
+      "Exploitation (Windows & Linux)",
+      "Post-exploitation : pivoting, élévation de privilèges",
+      "Metasploit Framework"
+    ]
   }
-]
+];
 </script>
 
 <style scoped>

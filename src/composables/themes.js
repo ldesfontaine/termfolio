@@ -1,36 +1,4 @@
 export const themes = {
-  dark: {
-    id: "T_001",
-    name: "dark",
-    colors: {
-      body: "#1D2A35",
-      scrollHandle: "#19252E",
-      scrollHandleHover: "#162028",
-      primary: "#05CE91",
-      secondary: "#FF9D00",
-      text: {
-        100: "#cbd5e1",
-        200: "#B2BDCC",
-        300: "#64748b"
-      }
-    }
-  },
-  light: {
-    id: "T_002",
-    name: "light",
-    colors: {
-      body: "#EFF3F3",
-      scrollHandle: "#C1C1C1",
-      scrollHandleHover: "#AAAAAA",
-      primary: "#027474",
-      secondary: "#FF9D00",
-      text: {
-        100: "#334155",
-        200: "#475569",
-        300: "#64748b"
-      }
-    }
-  },
   "blue-matrix": {
     id: "T_003",
     name: "blue-matrix",
@@ -63,22 +31,6 @@ export const themes = {
       }
     }
   },
-  "green-goblin": {
-    id: "T_005",
-    name: "green-goblin",
-    colors: {
-      body: "#000000",
-      scrollHandle: "#2E2E2E",
-      scrollHandleHover: "#414141",
-      primary: "#E5E500",
-      secondary: "#04A500",
-      text: {
-        100: "#01FF00",
-        200: "#04A5B2",
-        300: "#E50101"
-      }
-    }
-  },
   ubuntu: {
     id: "T_006",
     name: "ubuntu",
@@ -94,22 +46,5 @@ export const themes = {
         300: "#CDCDCD"
       }
     }
-  },
-  pink: {
-    id: "T_007",
-    name: "pink",
-    colors: {
-      body: "#FFC0CB",
-      scrollHandle: "#FF8DA1",
-      scrollHandleHover: "#FF748C",
-      primary: "#FF4D6D",
-      secondary: "#FF85A1",
-      text: {
-        100: "#4F0E1F",
-        200: "#801830",
-        300: "#B22044"
-      }
-    }
   }
 }
-

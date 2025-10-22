@@ -1,16 +1,16 @@
 <template>
   <div class="about-section">
     <p>
-      Hi, my name is <span class="highlight">Navaneeth M.S</span>!
+      <span class="highlight">Lucas Desfontine</span>, originaire de Nouvelle-Calédonie.
     </p>
     <p>
-      Doing my degree in <span class="highlight">Cyber Forensics</span>, I'm passionate about learning more about computers and cybersecurity.
+      Développeur <span class="highlight">full-stack</span> (BTS SIO, L3 MIAGE) en transition vers la <span class="highlight">cybersécurité</span>.
     </p>
     <p>
-      I am a self-learner, building real-world skills and enjoying meeting knowledgeable people, growing my network, and deepening my understanding of this field.
+      Spécialisation : <span class="highlight">SecOps / Cyber</span> (Blue/Red teams).
     </p>
     <p>
-      I'm here to learn, build, and grow!
+      Recherche d'<span class="highlight">alternance</span> pour un titre RNCP niveau 6/7 en 2026.
     </p>
   </div>
 </template>

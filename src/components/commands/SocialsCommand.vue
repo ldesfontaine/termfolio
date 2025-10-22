@@ -14,19 +14,15 @@
 const socialsData = [
   {
     name: "GitHub",
-    url: "https://github.com/navnee1h"
+    url: process.env.VUE_APP_GITHUB_URL
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/navaneethms"
+    url: process.env.VUE_APP_LINKEDIN_URL
   },
   {
     name: "Email",
-    url: "mailto:navaneethms182@gmail.com"
-  },
-  {
-    name: "Twitter",
-    url: "https://twitter.com/navnee1h"
+    url: `mailto:${process.env.VUE_APP_EMAIL}`
   }
 ]
 </script>

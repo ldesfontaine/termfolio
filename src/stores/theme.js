@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { themes } from '@/composables/themes'
 
 export const useThemeStore = defineStore('theme', () => {
-  const currentTheme = ref(themes.dark)
+  const currentTheme = ref(themes.espresso)
   const themeLoaded = ref(false)
 
   const setTheme = (themeName) => {

@@ -1,6 +1,6 @@
 <template>
   <div class="help-section">
-    <div class="help-title">Available Commands:</div>
+    <div class="help-title">Commandes Disponibles:</div>
     <div class="commands-grid">
       <div v-for="cmd in commands" :key="cmd.command" class="command-item">
         <span class="command-name">{{ cmd.command }}</span>
@@ -8,29 +8,23 @@
       </div>
     </div>
     <div class="help-footer">
-      <div>Press <span class="key">[Tab]</span> for auto completion.</div>
-      <div>Press <span class="key">[Esc]</span> to clear the input line.</div>
-      <div>Use <span class="key">[Up Arrow]</span> and <span class="key">[Down Arrow]</span> to scroll through your command history.</div>
+      <div>Appuyez sur <span class="key">[Tab]</span> pour l'auto-complétion.</div>
+      <div>Appuyez sur <span class="key">[Échap]</span> pour effacer la ligne de saisie.</div>
+      <div>Utilisez <span class="key">[Flèche Haut]</span> et <span class="key">[Flèche Bas]</span> pour naviguer dans l'historique des commandes.</div>
     </div>
   </div>
 </template>
 
 <script setup>
 const commands = [
-  { command: "about", desc: "- about me" },
-  { command: "clear", desc: "- clear the terminal" },
-  { command: "echo", desc: "- print out anything" },
-  { command: "education", desc: "- my education background" },
-  { command: "email", desc: "- send me an email" },
-  { command: "gui", desc: "- go to GUI version" },
-  { command: "help", desc: "- show all available commands" },
-  { command: "history", desc: "- view command history" },
-  { command: "projects", desc: "- view my projects" },
-  { command: "pwd", desc: "- print current directory" },
-  { command: "skills", desc: "- view my skills" },
-  { command: "socials", desc: "- check out my social links" },
-  { command: "themes", desc: "- change theme" },
-  { command: "whoami", desc: "- about current user" }
+  { command: "about", desc: "- à propos de moi" },
+  { command: "clear", desc: "- nettoyer le terminal" },
+  { command: "parcours", desc: "- mon parcours" },
+  { command: "help", desc: "- affiche toutes les commandes" },
+  { command: "projects", desc: "- mes projets" },
+  { command: "skills", desc: "- mes competences" },
+  { command: "socials", desc: "- réseaux sociaux" },
+  { command: "themes", desc: "- changer de thème" },
 ]
 </script>
 
