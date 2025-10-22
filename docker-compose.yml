@@ -1,0 +1,18 @@
+services:
+  vue-app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      # Monter le code source pour le hot reload
+      - .:/app
+      # Exclure node_modules pour éviter les conflits
+      - /app/node_modules
+    environment:
+      # Variables d'environnement pour Vue.js
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    stdin_open: true
+    tty: true
+    command: npm run serve
+
