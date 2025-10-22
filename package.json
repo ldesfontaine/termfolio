@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "pinia": "^3.0.3",
     "vue": "^3.2.13"
   },
   "devDependencies": {
@@ -23,7 +24,8 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "vue/setup-compiler-macros": true
     },
     "extends": [
       "plugin:vue/vue3-essential",
@@ -33,7 +35,9 @@
       "parser": "@babel/eslint-parser",
       "requireConfigFile": false
     },
-    "rules": {}
+    "rules": {
+      "vue/multi-word-component-names": "off"
+    }
   },
   "browserslist": [
     "> 1%",
@@ -42,4 +46,3 @@
     "not ie 11"
   ]
 }
-
