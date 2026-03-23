@@ -1,6 +1,8 @@
 # --- Stage 1 : Build ---
 FROM node:20-alpine AS builder
 
+RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
 WORKDIR /app
 
 # Nettoie le cache npm avant l'install
