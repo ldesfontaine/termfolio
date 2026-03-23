@@ -1,9 +1,10 @@
 # --- Stage 1 : Build ---
 FROM node:20-alpine AS builder
 
-# Configure le DNS pour le conteneur
-RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf && \
-    echo "nameserver 1.1.1.1" >> /etc/resolv.conf
+# Crée un fichier de configuration DNS personnalisé
+RUN mkdir -p /run/systemd/resolve && \
+    echo "nameserver 8.8.8.8" > /run/systemd/resolve/resolv.conf && \
+    echo "nameserver 1.1.1.1" >> /run/systemd/resolve/resolv.conf
 
 WORKDIR /app
 
