@@ -1,12 +1,10 @@
-# ============================================================================
-# Dockerfile — termfolio (Vue 3 + vue-cli)
-# Multi-stage : build Node → serve nginx:alpine
-# ============================================================================
-
 # --- Stage 1 : Build ---
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
+
+# Nettoie le cache npm avant l'install
+RUN npm cache clean --force
 
 # Copie package.json en premier pour profiter du cache Docker
 COPY package*.json ./
@@ -14,7 +12,9 @@ RUN npm ci --silent
 
 # Copie le reste des sources et build
 COPY . .
-RUN npm run build
+RUN npx vue-cli-service build
+# ou
+# RUN /app/node_modules/.bin/vue-cli-service build
 
 # --- Stage 2 : Serve ---
 FROM nginx:alpine
