@@ -1,31 +1,30 @@
 # --- Stage 1 : Build ---
 FROM node:20-alpine AS builder
 
+# Configure le DNS pour le conteneur
+RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf && \
+    echo "nameserver 1.1.1.1" >> /etc/resolv.conf
+
 WORKDIR /app
 
-# Nettoie le cache npm avant l'install
 RUN npm cache clean --force
 
-# Copie package.json en premier pour profiter du cache Docker
 COPY package*.json ./
-RUN npm ci --silent
+# Force npm à utiliser un registre spécifique
+RUN npm config set registry=https://registry.npmjs.org/ && \
+    npm ci --silent
 
-# Copie le reste des sources et build
 COPY . .
-RUN npx vue-cli-service build
-# ou
-# RUN /app/node_modules/.bin/vue-cli-service build
+# Force npx à utiliser le même registre
+RUN npx --registry=https://registry.npmjs.org/ vue-cli-service build
 
 # --- Stage 2 : Serve ---
 FROM nginx:alpine
 
-# Supprime la config nginx par défaut
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copie le build Vue depuis le stage précédent
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Config nginx pour SPA (toutes les routes → index.html)
 RUN printf 'server {\n\
     listen 80;\n\
     root /usr/share/nginx/html;\n\
