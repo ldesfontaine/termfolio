@@ -23,15 +23,15 @@ export default function Nav() {
       >
         lucas<span style={{ color: "var(--accent)" }}>.</span>desf
       </Link>
-      <div className="flex items-center gap-4 sm:gap-5">
+      <div className="flex items-center gap-2.5 sm:gap-5">
         {links.map((link, i) => {
           const active =
             pathname === link.href || pathname.startsWith(link.href + "/");
           return (
-            <span key={link.href} className="flex items-center gap-4 sm:gap-5">
+            <span key={link.href} className="flex items-center gap-2.5 sm:gap-5">
               {i > 0 && (
                 <span
-                  className="font-mono text-[11px] sm:text-[12.5px]"
+                  className="hidden sm:inline font-mono text-[12.5px]"
                   style={{ color: "var(--n300)" }}
                 >
                   |
@@ -55,7 +55,7 @@ export default function Nav() {
           );
         })}
         <span
-          className="font-mono text-[11px] sm:text-[12.5px]"
+          className="hidden sm:inline font-mono text-[12.5px]"
           style={{ color: "var(--n300)" }}
         >
           |
