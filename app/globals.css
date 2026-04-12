@@ -5,7 +5,31 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
+/* ── Dark par défaut ──────────────────────────────────────────── */
 :root {
+  color-scheme: dark;
+  --accent: #E07A5F;
+  --accent-hover: #C96B52;
+  --accent-light: #2A1F1A;
+  --accent-muted: rgba(224, 122, 95, 0.1);
+
+  --n900: #E8E8E8;
+  --n700: #CCCCCC;
+  --n500: #999999;
+  --n400: #777777;
+  --n300: #555555;
+  --n200: #333333;
+  --n100: #2A2A2A;
+  --n50: #1A1A1A;
+
+  --bg: #141413;
+  --card-bg: #1C1C1B;
+  --code-bg: #1A1A1A;
+  --code-border: #2A2A2A;
+}
+
+/* ── Light opt-in ────────────────────────────────────────────── */
+[data-theme="light"] {
   color-scheme: light;
   --accent: #C45D3E;
   --accent-hover: #A84E33;
@@ -25,30 +49,6 @@
   --card-bg: #FFFFFF;
   --code-bg: #F7F6F3;
   --code-border: #E8E6E1;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --accent: #E07A5F;
-    --accent-hover: #C96B52;
-    --accent-light: #2A1F1A;
-    --accent-muted: rgba(224, 122, 95, 0.1);
-
-    --n900: #E8E8E8;
-    --n700: #CCCCCC;
-    --n500: #999999;
-    --n400: #777777;
-    --n300: #555555;
-    --n200: #333333;
-    --n100: #2A2A2A;
-    --n50: #1A1A1A;
-
-    --bg: #141413;
-    --card-bg: #1C1C1B;
-    --code-bg: #1A1A1A;
-    --code-border: #2A2A2A;
-  }
 }
 
 body {

@@ -44,7 +44,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`${dmSans.variable} ${jetbrainsMono.variable}`}>
+    <html lang="fr" className={`${dmSans.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t)})()`,
+          }}
+        />
+      </head>
       <body className="flex min-h-screen flex-col">
         <Nav />
         <main className="flex-1 py-12">{children}</main>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { href: "/projets", label: "projets" },
@@ -53,6 +54,13 @@ export default function Nav() {
             </span>
           );
         })}
+        <span
+          className="font-mono text-[11px] sm:text-[12.5px]"
+          style={{ color: "var(--n300)" }}
+        >
+          |
+        </span>
+        <ThemeToggle />
       </div>
       </div>
     </nav>
