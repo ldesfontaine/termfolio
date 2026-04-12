@@ -17,20 +17,20 @@ export default function Nav() {
       <div className="mx-auto max-w-[820px] px-5 flex items-center justify-between py-5">
       <Link
         href="/"
-        className="font-mono text-[15px] font-medium"
+        className="font-mono text-[13px] sm:text-[15px] font-medium"
         style={{ color: "var(--n900)" }}
       >
         lucas<span style={{ color: "var(--accent)" }}>.</span>desf
       </Link>
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-4 sm:gap-5">
         {links.map((link, i) => {
           const active =
             pathname === link.href || pathname.startsWith(link.href + "/");
           return (
-            <span key={link.href} className="flex items-center gap-5">
+            <span key={link.href} className="flex items-center gap-4 sm:gap-5">
               {i > 0 && (
                 <span
-                  className="font-mono text-[12.5px]"
+                  className="font-mono text-[11px] sm:text-[12.5px]"
                   style={{ color: "var(--n300)" }}
                 >
                   |
@@ -38,7 +38,7 @@ export default function Nav() {
               )}
               <Link
                 href={link.href}
-                className="font-mono text-[12.5px] transition-colors duration-200"
+                className="font-mono text-[11px] sm:text-[12.5px] transition-colors duration-200"
                 style={{ color: active ? "var(--accent)" : "var(--n400)" }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.color = "var(--accent)")
