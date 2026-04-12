@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: light;
+  --accent: #C45D3E;
+  --accent-hover: #A84E33;
+  --accent-light: #F5EBE7;
+  --accent-muted: rgba(196, 93, 62, 0.08);
+
+  --n900: #1A1A1A;
+  --n700: #3D3D3D;
+  --n500: #6B6B6B;
+  --n400: #8A8A8A;
+  --n300: #ABABAB;
+  --n200: #D4D4D4;
+  --n100: #E8E8E8;
+  --n50: #F8F7F5;
+
+  --bg: #FCFBF9;
+  --card-bg: #FFFFFF;
+  --code-bg: #F7F6F3;
+  --code-border: #E8E6E1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --accent: #E07A5F;
+    --accent-hover: #C96B52;
+    --accent-light: #2A1F1A;
+    --accent-muted: rgba(224, 122, 95, 0.1);
+
+    --n900: #E8E8E8;
+    --n700: #CCCCCC;
+    --n500: #999999;
+    --n400: #777777;
+    --n300: #555555;
+    --n200: #333333;
+    --n100: #2A2A2A;
+    --n50: #1A1A1A;
+
+    --bg: #141413;
+    --card-bg: #1C1C1B;
+    --code-bg: #1A1A1A;
+    --code-border: #2A2A2A;
+  }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--n900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Bouton primaire ──────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 22px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s, transform 0.15s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary .btn-arrow {
+  transition: transform 0.2s;
+}
+
+.btn-primary:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* ── Bouton ghost ─────────────────────────────────────────────── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 22px;
+  border-radius: 6px;
+  border: 0.5px solid var(--n200);
+  color: var(--n700);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.15s, border-color 0.15s;
+  text-decoration: none;
+}
+
+.btn-ghost:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}

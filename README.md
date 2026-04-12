@@ -1,59 +1,108 @@
-# Vue.js Terminal Portfolio avec Docker
+# Bientot
 
-Ce projet Vue.js est configuré pour fonctionner dans un environnement Docker avec le hot reload pour le développement.
+Dashboard de monitoring et alerting modulaire. Se branche sur n'importe quelle infra.
 
-## Prérequis
+## Quick Start
 
-- Docker
-- Docker Compose
+```bash
+# Clone et init
+git clone <repo>
+cd bientot
+make init
 
-## Structure du projet
+# Editer la config
+vim .env
+vim config/targets.yml
+vim config/alerts.yml
 
-```
-terminalPortfolio/
-├── public/
-│   └── index.html
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   └── HelloWorld.vue
-│   ├── App.vue
-│   └── main.js
-├── Dockerfile
-├── docker-compose.yml
-├── vue.config.js
-└── package.json
+# Lancer
+make docker-up
 ```
 
-## Démarrage du projet en mode développement
+Dashboard accessible sur `http://localhost:3001`
 
-1. **Construire et démarrer le conteneur :**
-   ```bash
-   docker-compose up --build
-   ```
+## Architecture
 
-2. **Accéder à l'application :**
-   Ouvrir votre navigateur à l'adresse : `http://localhost:8080`
+```
+Sources (configurable)     Storage              Sorties
+----------------------     -------              -------
+Prometheus endpoints  -->            --> Dashboard web
+Docker health         -->  SQLite    --> Alerting (Ntfy, webhook)
+ZFS status            -->            --> API REST
+JSON files            -->
+```
 
-## Fonctionnalités du setup Docker
-
-- **Hot Reload** : Les modifications de code sont automatiquement reflétées dans le navigateur
-- **Volume monté** : Le code source est monté dans le conteneur
-- **Variables d'environnement** : Configurées pour le polling des fichiers (nécessaire sur certains systèmes)
-
-## Commandes utiles
-
-- Démarrer en arrière-plan : `docker-compose up -d`
-- Arrêter les conteneurs : `docker-compose down`
-- Voir les logs : `docker-compose logs -f`
-- Reconstruire : `docker-compose up --build`
-
-## Développement
-
-Modifiez les fichiers dans le dossier `src/` et les changements seront automatiquement pris en compte grâce au hot reload.
+**Modulaire** : ajoute un collector ou notifier en config, pas en code.
 
 ## Configuration
 
-- **Port** : 8080 (modifiable dans docker-compose.yml)
-- **Hot Reload** : Activé via les volumes montés et la configuration Vue.js
-- **Polling** : Activé pour la compatibilité Windows/macOS
+### targets.yml
+
+Definit les sources de metriques :
+
+```yaml
+collectors:
+  prometheus:
+    - name: mon-serveur
+      url: http://localhost:9100/metrics
+      interval: 30s
+  docker:
+    enabled: true
+    socket: /var/run/docker.sock
+  zfs:
+    enabled: true
+    pools: [tank]
+```
+
+### alerts.yml
+
+Definit les regles d'alerte :
+
+```yaml
+alerts:
+  - name: disk_critical
+    expr: disk_used_percent > 90
+    severity: critical
+    message: "Disk {{ .Value }}%"
+
+notifiers:
+  - type: ntfy
+    url: ${NTFY_URL}
+    topic: ${NTFY_TOPIC}
+```
+
+### .env
+
+Secrets et config runtime :
+
+```bash
+NTFY_URL=https://ntfy.example.com
+NTFY_TOPIC=alerts
+```
+
+## API
+
+```
+GET  /health          - Healthcheck
+GET  /api/status      - Status global
+GET  /api/metrics     - Liste des metriques
+GET  /api/metrics/:n  - Query time-series
+GET  /api/alerts      - Alertes actives
+POST /api/alerts/:id  - Acknowledge alert
+```
+
+## Dev
+
+```bash
+make build    # Compile
+make run      # Lance localement
+make test     # Tests
+make docker   # Build image
+```
+
+## Stack
+
+- **Backend** : Go 1.22
+- **Storage** : SQLite + downsampling automatique
+- **Frontend** : HTML/JS + HTMX + uPlot + Tailwind
+- **Container** : Alpine ~20MB
