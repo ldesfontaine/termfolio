@@ -25,7 +25,7 @@ Portabilité. Go compile en binaire statique cross-platform, je peux balancer l'
 
 ## Limites & recul
 
-C'est un POC. La corrélation fonctionne sur les cas que j'ai testés, mais les heuristiques ne sont pas encore assez robustes pour du production.
+C'est un POC. La corrélation fonctionne sur les cas que j'ai testés, mais les règles de détection ne sont pas encore assez robustes pour du production.
 
 Avec le recul, l'approche par commandes SSH a ses limites. En environnement réel, passer par les APIs des SIEM/SOAR en place ou utiliser les syscalls directement aurait été plus propre pour éviter de déclencher des alertes. C'est une piste d'évolution.
 

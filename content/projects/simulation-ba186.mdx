@@ -11,7 +11,7 @@ order: 2
 
 ## Le contexte
 
-APID est une boîte de 3 techniques qui travaillait déjà avec la Base Aérienne 186. La base avait besoin d'un outil de simulation de gestion de crise, à vocation pédagogique, utilisé lors d'interventions dans des lycées. APID m'a confié le projet en solo pendant un CDD de 2 mois. Ils me connaissaient déjà (j'avais fait un stage chez eux en 2022), et savaient que je pouvais me former en autonomie sur une stack que je ne maîtrisais pas.
+APID est une petite boîte IT basée à Nouméa, spécialisée dans la valorisation des données et les solutions open source. Ils travaillaient déjà avec la Base Aérienne 186 sur d'autres projets. La base avait besoin d'un outil de simulation de gestion de crise, à vocation pédagogique, utilisé lors d'interventions dans des lycées. APID m'a confié le projet en solo pendant un CDD de 2 mois. Ils me connaissaient déjà (j'avais fait un stage chez eux en 2022), et savaient que je pouvais me former en autonomie sur une stack que je ne maîtrisais pas.
 
 ## Le besoin
 
@@ -21,7 +21,7 @@ L'outil devait simuler une crise (un cyclone par exemple) et permettre à 4 équ
 
 Le scénario de crise est injecté dans un LLM via un prompt structuré. Les inputs des 4 équipes alimentent le contexte en continu ; chaque action modifie la situation. L'orchestration des agents passe par LangGraph et LangChain, avec un front en Next.js. Un agent final évalue les réponses et note la cohérence des décisions.
 
-Je ne connaissais ni LangGraph ni LangChain en arrivant. Je me suis autoformé sur le tas : projets de test pour comprendre les mécaniques, puis itérations sur l'architecture jusqu'à trouver quelque chose qui tenait. Pas de tuto miracle, de la doc, des essais, des échecs.
+Je ne connaissais ni LangGraph ni LangChain en arrivant. Je me suis autoformé sur le tas : projets de test pour comprendre les mécaniques, puis itérations sur l'architecture jusqu'à trouver quelque chose qui tenait. Pas de tuto miracle, de la doc, des essais et des échecs.
 
 ## Le résultat
 

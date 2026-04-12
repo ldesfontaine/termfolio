@@ -15,7 +15,7 @@ Sur une petite infra perso (un VPS + un Raspberry Pi), déployer Prometheus, Gra
 
 ## L'approche
 
-Bientôt est un système de monitoring agent/serveur en Go. Un agent léger par machine, un serveur central. L'agent auto-détecte ce qui est installé (Docker, ZFS, CrowdSec, Traefik, NetBird…), collecte les métriques et les push vers le serveur. Le dashboard s'adapte dynamiquement aux modules détectés.
+Bientôt est un système de monitoring agent/serveur en Go. Un agent léger par machine et un serveur central. L'agent auto-détecte ce qui est installé (Docker, ZFS, CrowdSec, Traefik, NetBird…), collecte les métriques et les push vers le serveur. Le dashboard s'adapte dynamiquement aux modules détectés.
 
 L'architecture est push-only : les agents n'exposent aucun port, ils poussent leurs données vers le serveur via le mesh NetBird. Le serveur écoute sur deux ports séparés : le dashboard derrière Traefik avec TLS et CrowdSec, les agents en direct sur le mesh. Si les agents passaient par Traefik, CrowdSec générerait des faux positifs sur leurs IPs et le module Traefik de Bientôt loggerait ses propres pushes.
 

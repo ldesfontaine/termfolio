@@ -3,7 +3,7 @@ import { TimelineItem } from "@/lib/types";
 export const timeline: TimelineItem[] = [
   {
     date: "2026 - 2028",
-    title: "Cybersécurité RNCP 7, Ynov",
+    title: "Cybersécurité RNCP 7, Ynov-Connect",
     subtitle: "Alternance 4j entreprise / 1j école",
     status: "active",
     highlight: "en cours",
