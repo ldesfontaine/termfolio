@@ -10,7 +10,6 @@
   color-scheme: dark;
   --accent: #E07A5F;
   --accent-hover: #C96B52;
-  --accent-light: #2A1F1A;
   --accent-muted: rgba(224, 122, 95, 0.1);
 
   --n900: #E8E8E8;
@@ -33,7 +32,6 @@
   color-scheme: light;
   --accent: #C45D3E;
   --accent-hover: #A84E33;
-  --accent-light: #F5EBE7;
   --accent-muted: rgba(196, 93, 62, 0.08);
 
   --n900: #1A1A1A;

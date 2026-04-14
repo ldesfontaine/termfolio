@@ -14,8 +14,6 @@ export const aboutStory = {
 
 export const quickInfo = {
   rhythm: "Alternance 4j/1j",
-  license: "Permis A & B",
   english: "Anglais B2",
-  age: "23 ans",
   location: "Saint-Étienne / Lyon",
 };
